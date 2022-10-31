@@ -1,0 +1,2 @@
+sudo mkdir /usr/local/share/gef
+echo source ~/.gdbinit-gef.py >> ~/.gdbinit
