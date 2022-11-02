@@ -1,2 +1,2 @@
-sudo mkdir /usr/local/share/gef
+wget -O ~/.gdbinit-gef.py -q https://gef.blah.cat/py
 echo source ~/.gdbinit-gef.py >> ~/.gdbinit
