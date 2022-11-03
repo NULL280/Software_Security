@@ -1,0 +1,22 @@
+1. check defence mechanism
+    checksec binary_name
+        arch: 32 bit
+            possible for NOP sled
+        Stack: no canary
+            possible for buffer overflow
+        NX: disable
+            possible for execute shellcode on buffer
+        RELRO: partial
+            GOT is writable
+        PIE: NO
+            binary ASLR is disable
+        PIE: YES
+            return address unknown   
+
+2. check Attack methods
+    buffer overflow
+    GOT table Attack
+    NOP sled
+    Gadget
+
+3. consider the binary itself
