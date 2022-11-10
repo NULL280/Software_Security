@@ -6,6 +6,9 @@
             possible for buffer overflow
         NX: disable
             possible for execute shellcode on buffer
+        NX: enabled
+            disable run binary on stack
+            use ROP chain (Gadget) to build shellcode
         RELRO: partial
             GOT is writable
         PIE: NO
@@ -17,6 +20,7 @@
     buffer overflow
     GOT table Attack
     NOP sled
-    Gadget
+    ROP chain
+        use to build shellcode when NX enabled
 
 3. consider the binary itself
