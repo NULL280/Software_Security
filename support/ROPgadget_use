@@ -1,0 +1,1 @@
+ROPgadget --ropchain --binary "binary path" > "output path"
