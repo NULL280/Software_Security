@@ -12,4 +12,3 @@ calcuate system address use puts address and offset
 write system address at 6295320
 
 type 3 (echo)
-/bin/sh

