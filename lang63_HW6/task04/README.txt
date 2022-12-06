@@ -1,0 +1,1 @@
+rustc calc.rs
